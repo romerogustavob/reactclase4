@@ -1,24 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
-
+import NavBar from './components/NavBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PiePagina from './components/Footer/PiePagina';
+import SwapiContainer from './components/swapi/SwapiContainer';
+import { BrowserRouter, Switch, Route, Link, Routes } from "react-router-dom";
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetail from './components/ItemDetail/ItemDetail';
+import HomePage from './components/HomePage/HomePage'
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>   
+      <BrowserRouter>
+        <NavBar/>
+        {/* <ItemDetailContainer/> */}
+        <Routes>            
+            <Route path='/' element={<ItemListContainer/>} />
+            <Route path='/category/:categoryid' element={<ItemListContainer/>} />
+            <Route path='/item/:id' element={<ItemDetailContainer/>} />
+        </Routes>
+        
+        <br/>
+        <PiePagina/>
+      </BrowserRouter>                              
+
+    </>
+    
   );
 }
 
