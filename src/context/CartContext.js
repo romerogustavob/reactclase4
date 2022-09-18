@@ -7,42 +7,34 @@ const CartContext = React.createContext()
 export const useCartContext=()=>useContext(CartContext)
 
 export const CartContextProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+    const [carts, setCarts] = useState([]);
   
-    const existe = (cart) => {
-      return cart.some((buscada) => buscada.name === cart.name);
+    const isInCart = (cart) => {
+      return carts.some((buscada) => buscada.name === cart.name);
     };
   
     const addItem = (cart) => {
-      if (existe(cart)) {
+      if (isInCart(cart)) {
         return Swal.fire("Ya existe en la lista");
       }
   
       const id = uuid();
-      const nuevacart = { ...cart, id };
-      setCart([...cart, nuevacart]);
+      const nuevaCart = { ...cart, id };
+      setCarts([...carts, nuevaCart]);
       Swal.fire("Cart agregada");
     };
   
-    //* Otra forma, es como mostro el profe Adrian
-  
-    //    const addItem2 = (cart) => {
-    //     const id = uuid();
-    //     const nuevacart = { ...cart, id };
-    //     setCart((prev) => prev.concat(nuevacart));
-    //   };
-  
     const removeItem = (cart) => {
-      const removeItem = cart.filter((buscada) => buscada.id !== cart.id);
-      return setCart(removeItem);
+      const removeItem = carts.filter((buscada) => buscada.id !== cart.id);
+      return setCarts(removeItem);
     };
   
     const clear = () => {
-      setCart([]);
+      setCarts([]);
     };
   
     const pendientes = () => {
-      const pendientes = cart.reduce(
+      const pendientes = carts.reduce(
         (acum, cart) => (cart.estado === false ? acum + 1 : acum),
         0
       );
@@ -50,7 +42,7 @@ export const CartContextProvider = ({ children }) => {
     };
   
     const actualizarEstado = (cart, estado) => {
-      const copiaCarts = [...cart];
+      const copiaCarts = [...carts];
   
       const actualizarCart = copiaCarts.map((actual) => {
         if (actual.id === cart.id) {
@@ -63,21 +55,21 @@ export const CartContextProvider = ({ children }) => {
       //!---------------------------------------------------------
       //! Esto no es necesario en la funcion, sino que lo use
       //! para mostrar como el estado original no habia cambiado
-      const original = cart.find((p) => p.id === cart.id);
+      const original = carts.find((p) => p.id === cart.id);
   
-      console.log("cart original:", original);
-      console.log("Lista cart original", cart);
-      console.log("Lista cart actualizadas:", actualizarCart);
+      console.log("Cart original:", original);
+      console.log("Lista original", carts);
+      console.log("Lista actualizadas:", actualizarCart);
       //! ---------------------------------------------------------
   
-      setCart(actualizarCart);
+      setCarts(actualizarCart);
     };
   
     return (
       <CartContext.Provider
         value={{
-          cart,
-          existe,
+          carts,
+          isInCart,
           addItem,
           removeItem,
           clear,

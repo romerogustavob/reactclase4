@@ -8,11 +8,13 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import InputNoVowels from './components/InputNoVowels/InputNoVowels';
 import Cart from './components/Cart/Cart'
+import CartContextProvider from './context/CartContext'
 
 function App() {
 
   return (
-    <>   
+    <>
+      <CartContextProvider>
       <BrowserRouter>
         <NavBar/>
         {/* <ItemDetailContainer/> */}
@@ -27,7 +29,7 @@ function App() {
         <br/>
         <PiePagina/>
       </BrowserRouter>                              
-
+      </CartContextProvider>
     </>
     
   );

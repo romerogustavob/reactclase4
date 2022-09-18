@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import CartContext from '../../context/CartContext'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import ItemList from '../ItemList/ItemList'
 import products from '../Jsons/products'
@@ -62,7 +61,7 @@ const ItemDetailContainer = () => {
 
   return (
     <>
-    <CartContext.Provider value={[]}>
+    
       <ItemDetail item={item}/>
       <div>
         {/* { total < 5 ? 
@@ -73,7 +72,7 @@ const ItemDetailContainer = () => {
          
          {/* <Count total={total} setTotal={setTotal}/> */}
       </div>
-      </CartContext.Provider>
+     
     </>
     
   )
