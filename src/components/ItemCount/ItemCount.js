@@ -35,7 +35,7 @@ const ItemCount = ( {stock, inicio, addOn}) => {
     <Table striped bordered hover size="sm">
       <thead>
         <tr>         
-          <th colSpan={3}>Agregar</th>
+          <th colSpan={3}>Agregar al carrito</th>
         </tr>
       </thead>
       <tbody>
@@ -50,11 +50,11 @@ const ItemCount = ( {stock, inicio, addOn}) => {
                 <Button variant="secondary" size="sm" active onClick={handleClick}>+</Button>
             </td>
         </tr>
-        <tr text-align="center">   
+        {/* <tr text-align="center">   
             <td text-align="center" colSpan={3}>
                 <Button variant="primary"  size="sm" active onClick="">Ir al carrito</Button>
             </td>
-        </tr>
+        </tr> */}
       </tbody>
     </Table>
     </>

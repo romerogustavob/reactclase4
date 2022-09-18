@@ -5,6 +5,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidgetFooter from '../CartWidgetFooter';
 
+export const DarkModeButton=()=>{
+  return(
+    <input type='checkbox' className=''/>
+  )
+  
+}
+
 const PiePagina = () => {
   return (
     <>
@@ -13,6 +20,7 @@ const PiePagina = () => {
         <Container>    
           <CartWidgetFooter></CartWidgetFooter>
           <Navbar.Brand href="#home">Gus Store - All rights reserved</Navbar.Brand>
+          {/* <DarkModeButton/> */}
           <Nav className="me-auto">
           </Nav>
         </Container>
